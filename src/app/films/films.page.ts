@@ -42,6 +42,8 @@ export class FilmsPage implements OnInit, OnDestroy {
       this.isLoading = false;
       if (this.loadedFilms.length <= 0) {
         this.noResults = true;
+      } else {
+        this.noResults = false;
       }
     }, error => {
       this.isLoading = false;
