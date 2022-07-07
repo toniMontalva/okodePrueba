@@ -13,6 +13,7 @@ import { Film } from './film.model';
 export class FilmsPage implements OnInit, OnDestroy {
   loadedFilms: Film[];
   isLoading = false;
+  inputText = '';
 
   private fetchingSub: Subscription;
 
@@ -22,9 +23,9 @@ export class FilmsPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.fetchingSub = this.filmService.films.subscribe((films) => {
+    /** this.fetchingSub = this.filmService.films.subscribe((films) => {
       this.loadedFilms = films;
-    });
+    }); */
   }
 
   ngOnDestroy() {
