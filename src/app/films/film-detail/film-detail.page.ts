@@ -49,4 +49,22 @@ export class FilmDetailPage implements OnInit, OnDestroy {
       this.fetchingSub.unsubscribe();
     }
   }
+
+  fullLanguageString(lang: string): string {
+    let langRes = lang;
+    switch (lang) {
+      case 'es':
+        langRes = 'Español';
+        break;
+      case 'en':
+        langRes = 'Inglés';
+        break;
+      case 'fr':
+        langRes = 'Francés';
+        break;
+      default:
+        break;
+    }
+    return langRes;
+  }
 }

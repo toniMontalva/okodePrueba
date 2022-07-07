@@ -30,6 +30,7 @@
         <p style="font-weight: bold">
           ¡Se han encontrado {{totalFilms}} resultados!
         </p>
+        <small *ngIf="totalFilms > 0">* Mostrando los primeros 20</small>
       </ion-col>
     </ion-row>
     <ion-row>
