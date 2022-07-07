@@ -26,9 +26,6 @@ export class FilmsPage implements OnInit, OnDestroy {
   ngOnInit() {
     this.fetchingSub = this.filmService.films.subscribe((films) => {
       this.loadedFilms = films;
-      if (this.loadedFilms.length <= 0) {
-        this.noResults = true;
-      }
     });
   }
 
@@ -43,6 +40,9 @@ export class FilmsPage implements OnInit, OnDestroy {
     this.filmService.fetchFilmsByTitle(this.inputText).subscribe(() => {
       this.totalFilms = this.filmService.totalResults;
       this.isLoading = false;
+      if (this.loadedFilms.length <= 0) {
+        this.noResults = true;
+      }
     }, error => {
       this.isLoading = false;
       throw new Error(error);

@@ -21,9 +21,11 @@
       <ion-col size-md="6" size-lg="4">
         <ion-button expand="block" (click)="fetchFilms()">Buscar</ion-button>
       </ion-col>
-      <div class="ion-text-center" *ngIf="!isLoading && !noResults">
+    </ion-row>
+    <ion-row *ngIf="!isLoading && noResults">
+      <ion-col size-md="6" size-lg="4" class="ion-text-center" >
         <p>No se han encontrado películas con ese título</p>
-      </div>
+      </ion-col>
     </ion-row>
     <ion-row *ngIf="totalFilms > 0">
       <ion-col size-md="6" size-lg="4" class="ion-text-center">
