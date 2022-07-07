@@ -1,9 +1,26 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>film-detail</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Detalles película</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="ion-text-center">
+    <ion-spinner *ngIf="isLoading && !film"></ion-spinner>
+  </div>
+  <ion-grid *ngIf="film">
+    <ion-row>
+      <ion-col>
+        <div>
+          <h2>{{film.title}}</h2>
+        </div>
+        <div class="relaseDate">
+          <p><b>Fecha de estreno: </b>{{film.releaseDate | date}}</p>
+        </div>
+        <div>
+          <ion-textarea>Resumen: {{film.overview}}</ion-textarea>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

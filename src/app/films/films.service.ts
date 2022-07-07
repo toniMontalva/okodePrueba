@@ -4,8 +4,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject } from 'rxjs';
-import { map, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 import { Film } from './film.model';
 import { environment } from '../../environments/environment';
