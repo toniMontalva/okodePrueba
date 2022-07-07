@@ -34,11 +34,10 @@ export class FilmsPage implements OnInit, OnDestroy {
     }
   }
 
-  // mientras se carga la vista y las películas, muestro un spinner
-  ionViewWillEnter() {
-    this.isLoading = true;
+  /** ionViewWillEnter() {
+     this.isLoading = true;
     this.filmService.fetchFilms().subscribe(() => {
       this.isLoading = false;
     });
-  }
+  } */
 }

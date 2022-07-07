@@ -20,10 +20,11 @@ export class FilmsService {
     return this._films.asObservable();
   }
 
-  fetchFilms() {
+  fetchFilmsByTitle(title: string) {
+    const titleQuery = title.replace(' ','+');
     return this.http
       .get<Film[]>(
-        `https://api.themoviedb.org/3/movie/550?api_key=${environment.movieDbAPIKey}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${environment.movieDbAPIKey}&query`
       )
       .pipe(
         map((films) => {
