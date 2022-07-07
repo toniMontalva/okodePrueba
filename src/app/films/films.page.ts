@@ -13,14 +13,14 @@ import { Film } from './film.model';
 export class FilmsPage implements OnInit, OnDestroy {
   loadedFilms: Film[];
   isLoading = false;
+  totalFilms = 0;
   noResults = false;
   inputText = '';
 
   private fetchingSub: Subscription;
 
   constructor(
-    private filmService: FilmsService,
-    private loadingCtrl: LoadingController
+    private filmService: FilmsService
   ) {}
 
   ngOnInit() {
@@ -41,6 +41,7 @@ export class FilmsPage implements OnInit, OnDestroy {
   fetchFilms() {
     this.isLoading = true;
     this.filmService.fetchFilmsByTitle(this.inputText).subscribe(() => {
+      this.totalFilms = this.loadedFilms.length;
       this.isLoading = false;
     }, error => {
       this.isLoading = false;

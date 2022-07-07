@@ -25,5 +25,24 @@
         <p>No se han encontrado películas con ese título</p>
       </div>
     </ion-row>
+    <ion-row *ngIf="totalFilms > 0">
+      <ion-col size-md="6" size-lg="4" class="ion-text-center">
+        <p style="font-weight: bold">
+          Se han encontrado {{totalFilms}} resultados!
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" size-lg="4">
+        <ion-list>
+          <ion-item
+            *ngFor="let film of loadedFilms; let index"
+            [routerLink]="['/','films','film-detail', film.id]"
+          >
+            <p>{{film.title}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
