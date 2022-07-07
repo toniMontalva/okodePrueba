@@ -13,6 +13,7 @@ import { Film } from './film.model';
 export class FilmsPage implements OnInit, OnDestroy {
   loadedFilms: Film[];
   isLoading = false;
+  noResults = false;
   inputText = '';
 
   private fetchingSub: Subscription;
@@ -23,9 +24,12 @@ export class FilmsPage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    /** this.fetchingSub = this.filmService.films.subscribe((films) => {
+    this.fetchingSub = this.filmService.films.subscribe((films) => {
       this.loadedFilms = films;
-    }); */
+      if (this.loadedFilms.length <= 0) {
+        this.noResults = true;
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -34,10 +38,14 @@ export class FilmsPage implements OnInit, OnDestroy {
     }
   }
 
-  /** ionViewWillEnter() {
-     this.isLoading = true;
-    this.filmService.fetchFilms().subscribe(() => {
+  fetchFilms() {
+    this.isLoading = true;
+    this.filmService.fetchFilmsByTitle(this.inputText).subscribe(() => {
       this.isLoading = false;
+    }, error => {
+      this.isLoading = false;
+      throw new Error(error);
     });
-  } */
+  }
+
 }

@@ -24,7 +24,7 @@ export class FilmsService {
     const titleQuery = title.replace(' ','+');
     return this.http
       .get<Film[]>(
-        `https://api.themoviedb.org/3/search/movie?api_key=${environment.movieDbAPIKey}&query`
+        `https://api.themoviedb.org/3/search/movie?api_key=${environment.movieDbAPIKey}&query=${titleQuery}`
       )
       .pipe(
         map((films) => {
