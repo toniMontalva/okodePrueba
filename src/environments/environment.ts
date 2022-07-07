@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  movieDbAPIKey: 'd85ec2147c283ed00b40364d91209841'
 };
 
 /*
