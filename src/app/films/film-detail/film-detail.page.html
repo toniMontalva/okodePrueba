@@ -8,8 +8,11 @@
   <div class="ion-text-center">
     <ion-spinner *ngIf="isLoading && !film"></ion-spinner>
   </div>
-  <ion-grid *ngIf="film">
+  <ion-grid *ngIf="film" class="ion-content-center">
     <ion-row>
+      <ion-col *ngIf="film.poster" offset-md="3">
+        <ion-img src="http://image.tmdb.org/t/p/w500/{{film.poster}}" class="poster"></ion-img>
+      </ion-col>
       <ion-col>
         <div>
           <h2>{{film.title}}</h2>
@@ -17,6 +20,13 @@
         <div class="relaseDate">
           <p><b>Fecha de estreno: </b>{{film.releaseDate | date}}</p>
         </div>
+        <div>
+          <p>Idioma: {{film.language}}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
         <div>
           <ion-textarea>Resumen: {{film.overview}}</ion-textarea>
         </div>

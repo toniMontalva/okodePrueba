@@ -41,7 +41,7 @@ export class FilmsPage implements OnInit, OnDestroy {
   fetchFilms() {
     this.isLoading = true;
     this.filmService.fetchFilmsByTitle(this.inputText).subscribe(() => {
-      this.totalFilms = this.loadedFilms.length;
+      this.totalFilms = this.filmService.totalResults;
       this.isLoading = false;
     }, error => {
       this.isLoading = false;

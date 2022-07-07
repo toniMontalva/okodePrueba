@@ -4,6 +4,7 @@ export class Film {
     public title: string,
     public releaseDate: Date,
     public language: string,
-    public overview: string
+    public overview: string,
+    public poster?: string
   ) {}
 }

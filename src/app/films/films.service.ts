@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class FilmsService {
+  totalResults: number;
   private _films = new BehaviorSubject<Film[]>([]);
 
   constructor(private http: HttpClient) {}
@@ -31,17 +32,16 @@ export class FilmsService {
       .pipe(
         map((films) => {
           const filmsRes = [];
+          this.totalResults = films['total_results'];
           for (const key in films['results']){
-            console.log(key);
-            console.log(films['results'][key]);
-
             filmsRes.push(
               new Film(
                 key,
                 films['results'][key].original_title,
                 new Date(films['results'][key].release_date),
                 films['results'][key].original_language,
-                films['results'][key].overview
+                films['results'][key].overview,
+                films['results'][key].poster_path
               )
             );
           }
