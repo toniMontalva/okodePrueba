@@ -23,7 +23,12 @@ export class FilmsService {
     return this._films.asObservable();
   }
 
+  /**
+   * @param title el título de la película
+   * @returns Obtiene un listado (Observable) de películas que contienen el texto introducido en el título
+   */
   fetchFilmsByTitle(title: string) {
+    // Cambia el string con espacios a un formato amigable para la petición http
     const titleQuery = title.replace(' ', '+');
     return this.http
       .get<Film[]>(
@@ -33,6 +38,7 @@ export class FilmsService {
         map((films) => {
           const filmsRes = [];
           this.totalResults = films['total_results'];
+          // Recorre el array de películas recibidas por la petición a la API
           for (const key in films['results']){
             filmsRes.push(
               new Film(
@@ -48,6 +54,7 @@ export class FilmsService {
 
           return filmsRes;
         }),
+        // Actualiza el observable
         tap((filmsRes) => {
           this._films.next(filmsRes);
         })

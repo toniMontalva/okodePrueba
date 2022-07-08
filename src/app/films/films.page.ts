@@ -23,6 +23,7 @@ export class FilmsPage implements OnInit, OnDestroy {
     private filmService: FilmsService
   ) {}
 
+  // Se suscribe al observable para comprobar si hay cambios para guardarlos
   ngOnInit() {
     this.fetchingSub = this.filmService.films.subscribe((films) => {
       this.loadedFilms = films;
@@ -35,6 +36,7 @@ export class FilmsPage implements OnInit, OnDestroy {
     }
   }
 
+  // Llama al servicio que gestiona la petición de la API
   fetchFilms() {
     this.isLoading = true;
     this.filmService.fetchFilmsByTitle(this.inputText).subscribe(() => {

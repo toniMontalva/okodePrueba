@@ -31,6 +31,7 @@ export class FilmDetailPage implements OnInit, OnDestroy {
       }
       this.isLoading = true;
 
+      // Guarda la pelicula seleccionada por el usuario
       this.fetchingSub = this.filmService.films.subscribe(
         (films) => {
           this.isLoading = false;
@@ -44,12 +45,15 @@ export class FilmDetailPage implements OnInit, OnDestroy {
     });
   }
 
+  // Cancela la subscripcion al observable para evitar pérdidas de memoria
   ngOnDestroy(): void {
     if (this.fetchingSub) {
       this.fetchingSub.unsubscribe();
     }
   }
 
+  // Cambia la notación abreviada del idioma al nombre completo del mismo
+  // Por completar para otros idiomas / Utilizar el módulo i18n
   fullLanguageString(lang: string): string {
     let langRes = lang;
     switch (lang) {
